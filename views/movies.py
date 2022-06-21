@@ -38,7 +38,10 @@ class MovieView(Resource):
 
     def put(self, mid):
         try:
-            return movie_service.update(mid, request.json), 204
+            data = request.json
+            if 'id' not in data:
+                data['id'] = mid
+            return movie_service.update(data), 204
         except ValidationError as e:
             return {'errors': e.normalized_messages()}, 400
 
