@@ -25,7 +25,6 @@ class MovieService:
 
     def update(self, data):
         self.dao.update(data)
-        return self.dao
 
     def delete(self, mid):
         self.dao.delete(mid)
